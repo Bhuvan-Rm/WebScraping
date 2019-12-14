@@ -5,6 +5,7 @@ from pprint import pprint
 def weather_data(query):
     res = requests.get(
         'http://api.openweathermap.org/data/2.5/weather?' + query + '&APPID=b35975e18dc93725acb092f7272cc6b8&units=metric');
+    print(res.json())
     return res.json();
 
 
@@ -13,6 +14,7 @@ def print_weather(result, city):
     print("Wind speed: {} m/s".format(result['wind']['speed']))
     print("Description: {}".format(result['weather'][0]['description']))
     print("Weather: {}".format(result['weather'][0]['main']))
+    print("Coordinates Longitude: {} ,Latitude: {}".format(result['coord']['lon'], result['coord']['lat']))
 
 
 def main():
